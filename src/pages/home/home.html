@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>支付宝测试</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      需要服务端返回字符串格式参数(app_id=xxx&biz_content=%7B%2...)
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-list-header>
+      订单获取
+    </ion-list-header>
+
+    <ion-item>
+      <ion-input type="url" placeholder="订单获取地址" [(ngModel)]="url"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>请求方式</ion-label>
+      <ion-select [(ngModel)]="method" interface="popover">
+        <ion-option value="0">GET</ion-option>
+        <ion-option value="1">POST</ion-option>
+        <ion-option value="2">PUT</ion-option>
+        <ion-option value="3">DELETE</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="头信息{'Content-Type':'application/json'}" [(ngModel)]="header"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="body可为空" [(ngModel)]="body"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      回调服务端
+    </ion-list-header>
+    <ion-item>
+      <ion-input type="notifyUrl" placeholder="回调地址，POST形式" [(ngModel)]="notifyUrl"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div style="width: 100%;text-align: center;">
+    <button ion-button (click)="getAliPayOrder()">获取支付宝订单</button>
+    <button ion-button (click)="onAlipay()">支付宝支付</button>
+  </div>
+
+
+</ion-content>
